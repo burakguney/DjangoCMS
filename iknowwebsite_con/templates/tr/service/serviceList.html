@@ -1,0 +1,46 @@
+{% extends 'tr/layout.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+
+    <h3 class="mb-3">
+        {% block title %}
+        Hizmetler
+        {% endblock title %}
+    </h3>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home' %}">Anasayfa</a>
+        </li>
+        <li class="breadcrumb-item active">Hizmetler</li>
+    </ol>
+
+    <div class="row">
+
+        {% for service in serviceList %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card border-0 h-100 shadow">
+                <a class="mt-4 text-center"
+                    href="{% url 'serviceSingle' service.serviceSlug %}">{{ service.serviceIcon|safe }}</a>
+                <div class="card-body">
+                    <h4 class="card-title text-center">
+                        <a href="{% url 'serviceSingle' service.serviceSlug %}">{{ service.serviceTitle }}</a>
+                    </h4>
+                    <p class="card-text">{{ service.serviceContent|safe|truncatechars:200 }}
+                    </p>
+                </div>
+                <div class="card-footer text-right">
+                    <a class="btn btn-primary" href="{% url 'serviceSingle' service.serviceSlug %}">Devamını Oku
+                        <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+{% endblock content %}

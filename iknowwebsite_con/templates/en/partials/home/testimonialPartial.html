@@ -1,0 +1,39 @@
+{% load static %}
+<!-- Testimonials Section -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center mb-4">
+                    <i class="fas fa-comments"></i> TESTIMONIALS
+                </h2>
+                <h5 class="text-muted mb-4 text-center">
+                    Listen to us from our references!
+                </h5>
+            </div>
+            <div class="col-sm-8 offset-sm-2 col-xs-12 p-0">
+                <div class="owl-testimonials owl-carousel owl-theme rounded">
+
+                    {% for testimonial in testimonialPartial %}
+                    <div class="item mb-4">
+                        <div class="card shadow border-0">
+                            <div class="row">
+                                <div class="col-6 offset-3 mt-3">
+                                    <img src="{{ testimonial.testimonialImage.url }}" class="rounded-circle" alt="...">
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-center">{{ testimonial.testimonialTitle }}</h4>
+                                        <p class="card-text">{{ testimonial.testimonialContent }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{% extends 'tr/layout.html' %}
+{% load static %}
+{% block content %}
+<!-- Page Content -->
+<div class="container mt-5">
+
+    <h3 class="mb-3">
+        {% block title %}{{ portfolioSingle.portfolioTitle }}{% endblock title %}
+    </h3>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">
+            <a href="{% url 'home' %}">Anasayfa</a>
+        </li>
+        <li class="breadcrumb-item active"><a href="{% url 'portfolioList' %}">Projeler</a></li>
+        <li class="breadcrumb-item">{{portfolioSingle.portfolioTitle}}</li>
+    </ol>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-xs-12">
+            <img class="img-fluid border rounded" src="{{ portfolioSingle.portfolioImage.url }}" alt="">
+        </div>
+        <div class="col-md-8 offset-md-2 col-xs-12">
+            <hr>
+            <p>{{ portfolioSingle.portfolioContent|safe }}</p>
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock content %}

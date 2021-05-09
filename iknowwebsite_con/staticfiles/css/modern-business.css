@@ -1,0 +1,204 @@
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/template/modern-business)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+h1 {
+  color: #3f3c6a;
+}
+
+h2 {
+  color: #3f3c6a;
+}
+
+h3 {
+  color: #3f3c6a;
+}
+
+
+a {
+  color: #3f3c6a;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f78428;
+}
+
+.card-footer {
+  background-color: #3f3c6a;
+}
+
+.nav-link {
+  color: #3f3c6a;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #f78428;
+}
+
+.item-active {
+  color: #f78428;
+}
+
+.dropdown-item {
+  border: 5px solid white;
+  border-radius: 10px;
+  color: #3f3c6a;
+}
+
+.dropdown-item:hover {
+  background-color: #f78428;
+  color: white;
+}
+
+.dropdown-item:focus {
+  background-color: #3f3c6a;
+}
+
+.btn-primary {
+  border-color: #3f3c6a;
+  background-color: #3f3c6a;
+}
+
+.btn-primary:hover {
+  border-color: #f78428;
+  background-color: #f78428;
+}
+
+footer a {
+  color: #3f3c6a;
+  text-decoration: none;
+}
+
+footer h5 {
+  color: #f78428;
+}
+
+footer p {
+  color: black;
+
+}
+
+
+.owl-carousel span {
+  width: 10px;
+  height: 10px;
+  margin: 5px 7px;
+  background: #3f3c6a !important;
+  display: block;
+  -webkit-backface-visibility: visible;
+  -webkit-transition: opacity 200ms ease;
+  -moz-transition: opacity 200ms ease;
+  -ms-transition: opacity 200ms ease;
+  -o-transition: opacity 200ms ease;
+  transition: opacity 200ms ease;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+}
+
+.owl-carousel .active span {
+  width: 10px;
+  height: 10px;
+  margin: 5px 7px;
+  background: #f78428 !important;
+  display: block;
+  -webkit-backface-visibility: visible;
+  -webkit-transition: opacity 200ms ease;
+  -moz-transition: opacity 200ms ease;
+  -ms-transition: opacity 200ms ease;
+  -o-transition: opacity 200ms ease;
+  transition: opacity 200ms ease;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+}
+
+iframe {
+  width: 100%;
+  height: 200px;
+}
+
+.contactMap iframe {
+  width: 100%;
+  height: 400px;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 10%;
+  z-index: 99;
+}
+
+
+.carousel-large {
+  display: none;
+}
+
+.carousel-medium {
+  display: none;
+}
+
+.carousel-small {
+  display: none;
+}
+
+
+@media screen and (max-width: 575px) {
+
+  .carousel-large {
+    display: none;
+  }
+
+  .carousel-medium {
+    display: none;
+  }
+
+  .carousel-small {
+    display: block;
+  }
+
+  #myBtn {
+    bottom: 5px;
+    right: 5px;
+  }
+
+}
+
+
+@media screen and (max-width: 991px) and (min-width: 576px) {
+
+  .carousel-large {
+    display: none;
+  }
+
+  .carousel-medium {
+    display: block;
+  }
+
+  .carousel-small {
+    display: none;
+  }
+
+}
+
+
+@media screen and (min-width: 992px) {
+
+  .carousel-large {
+    display: block;
+  }
+
+  .carousel-medium {
+    display: none;
+  }
+
+  .carousel-small {
+    display: none;
+  }
+
+}

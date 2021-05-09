@@ -1,0 +1,31 @@
+{% extends 'en/layout.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="mb-3">
+        {% block title %}
+        {{ carouselSingle.carouselTitle }}
+        {% endblock title %}
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home_en' %}">Home</a>
+        </li>
+        <li class="breadcrumb-item active">{{ carouselSingle.carouselTitle }}</li>
+    </ol>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-xs-12">
+            <img class="img-fluid rounded" src="{{carouselSingle.carouselImageSmall.url}}" alt="">
+        </div>
+        <div class="col-md-8 offset-md-2 col-xs-12">
+            <hr>
+            <p>{{ carouselSingle.carouselContent|safe }}</p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

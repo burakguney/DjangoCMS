@@ -1,0 +1,40 @@
+{% load static %}
+<!-- Portfolio Section -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center mb-4">
+                    <i class="fas fa-grip-horizontal"></i> PROJECTS
+                </h2>
+                <h5 class="text-muted mb-4 text-center">
+                    You can take a closer look at our projects that we have successfully overcome.
+                </h5>
+            </div>
+            <div class="owl-blog owl-carousel owl-theme rounded">
+                {% for portfolio in portfolioPartial %}
+                <div class="item mb-4">
+                    <a class="text-center" href="{% url 'portfolioSingle_en' portfolio.portfolioSlug %}">
+                        <div class="card border-0 shadow">
+                            <img class="img-fluid" src="{{ portfolio.portfolioImage.url }}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    {{ portfolio.portfolioTitle }}
+                                </h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                <div class="item bg-white rounded">
+                    <h3 class="text-center" style="padding-top: 145px; padding-bottom: 145px;">
+                        <a href="{% url 'portfolioList_en' %}">
+                            <i class="far fa-hand-point-right"></i>
+                            Go to Projects
+                        </a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

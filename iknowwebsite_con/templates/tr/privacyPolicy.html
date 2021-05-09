@@ -1,0 +1,27 @@
+{% extends 'tr/layoutwithoutfooter.html' %}
+{% load static %}
+{% block content-without-footer %}
+
+<!-- Page Content -->
+<div class="container mt-5">
+
+    <h3 class="mb-3">
+        {% block title %}
+        Kişisel Verilerin Korunması Kanunu
+        {% endblock title %}
+    </h3>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home' %}">Anasayfa</a>
+        </li>
+        <li class="breadcrumb-item active">K.V.K.K.</li>
+    </ol>
+
+    <p>
+        {{ privacyPolicy.policyContent|safe }}
+    </p>
+
+</div>
+
+{% endblock content-without-footer %}

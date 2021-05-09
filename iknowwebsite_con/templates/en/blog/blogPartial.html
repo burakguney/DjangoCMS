@@ -1,0 +1,46 @@
+{% load static %}
+<!-- Blog Section -->
+<div class="jumbotron bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center mb-4">
+                    <i class="fas fa-blog"></i> BLOG
+                </h2>
+                <h5 class="text-muted mb-4 text-center">
+                    You can follow sectoral innovations and latest technologies more closely on our blog.
+                </h5>
+            </div>
+            <div class="owl-blog owl-carousel owl-theme bg-white shadow rounded">
+                {% for blog in blogPartial %}
+                <div class="item mb-4">
+                    <div class="card border-0 h-100 shadow">
+                        <img class="img-fluid" src="{{ blog.blogImage.url }}" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {{ blog.blogTitle }}
+                            </h5>
+                            <p class="card-text text-right text-muted">
+                                {{ blog.blogDate }}
+                            </p>
+                            <p><i class="far fa-eye"></i> {{blog.total_views}}</p>
+                        </div>
+                        <div class="card-footer text-right">
+                            <form action="{% url 'blogSingle_en' blog.blogSlug %}" method="get">
+                                <input type="hidden" name="blog-slug" value="{{blog.blogSlug}}">
+                                <button type="submit" class="btn btn-primary">Read More <i
+                                        class="fas fa-arrow-right"></i></a></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="item">
+                    <h3 class="text-center" style="padding-top: 200px; padding-bottom: 150px;">
+                        <a href="{% url 'blogList_en' %}"><i class="far fa-hand-point-right"></i>Go to Blog</a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

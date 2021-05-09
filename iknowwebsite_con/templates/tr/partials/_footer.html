@@ -1,0 +1,151 @@
+{% load static %}
+<!-- Footer Section -->
+<footer class="text-center text-lg-start" style="margin-top: 100px;">
+    <div class="jumbotron mb-0 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                    {{ contact.googleMap|safe }}
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="mb-4">İletişim</h5>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <h5>Adres</h5>
+                            <p>
+                                {{ contact.address|safe }}
+                            </p>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5>Telefon</h5>
+                                    <p>
+                                        <i class="fas fa-phone"></i> {{ contact.phoneOne }}
+                                    </p>
+
+                                    {% if contact.phoneTwo %}
+                                    <p>
+                                        <i class="fas fa-phone"></i> {{ contact.phoneTwo }}
+                                    </p>
+                                    {% endif %}
+
+                                    {% if contact.phoneThree %}
+                                    <p>
+                                        <i class="fas fa-phone"></i> {{ contact.phoneThree }}
+                                    </p>
+                                    {% endif %}
+                                </div>
+                                <div class="col-12">
+                                    <h5>E-Posta</h5>
+
+                                    <a href="mailto:{{ contact.emailOne }}">
+                                        <i class="fas fa-envelope"></i> {{ contact.emailOne }}
+                                    </a>
+
+                                    {% if contact.emailTwo %}
+                                    <a href="mailto:{{ contact.emailTwo }}">
+                                        <i class="fas fa-envelope"></i> {{ contact.emailTwo }}
+                                    </a>
+                                    {% endif %}
+
+                                    {% if contact.emailThree %}
+                                    <a href="mailto:{{ contact.emailThree }}">
+                                        <i class="fas fa-envelope"></i> {{ contact.emailThree }}
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="mb-4">Bağlantılar</h5>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <ul class="list-unstyled font-weight-bold">
+                                <li>
+                                    <a href="{% url 'about' %}">Hakkımızda</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'serviceList' %}">Hizmetler</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'portfolioList' %}">Projeler</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'blogList' %}">Blog</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <ul class="list-unstyled font-weight-bold">
+                                <li>
+                                    <a href="{% url 'contact' %}">İletişim</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'careerList' %}">Kariyer</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'faq' %}">S.S.S.</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'privacyPolicy' %}">K.V.K.K.</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <ul class="nav justify-content-center">
+
+                                {% if contact.facebook %}
+                                <li class="nav-item">
+                                    <a class="nav-link p-1" href="{{ contact.facebook }}" target="_blank"><i
+                                            class="fab fa-facebook-square fa-2x"></i></a>
+                                </li>
+                                {% endif %}
+
+                                {% if contact.twitter %}
+                                <li class="nav-item">
+                                    <a class="nav-link p-1" href="{{ contact.twitter }}" target="_blank"><i
+                                            class="fab fa-twitter-square fa-2x"></i></a>
+                                </li>
+                                {% endif %}
+
+                                {% if contact.instagram %}
+                                <li class="nav-item">
+                                    <a class="nav-link p-1" href="{{ contact.instagram }}" target="_blank"><i
+                                            class="fab fa-instagram-square fa-2x"></i></a>
+                                </li>
+                                {% endif %}
+
+                                {% if contact.youtube %}
+                                <li class="nav-item">
+                                    <a class="nav-link p-1" href="{{ contact.youtube }}" target="_blank"><i
+                                            class="fab fa-youtube fa-2x"></i></a>
+                                </li>
+                                {% endif %}
+
+                                {% if contact.linkedin %}
+                                <li class="nav-item">
+                                    <a class="nav-link p-1" href="{{ contact.linkedin }}" target="_blank"><i
+                                            class="fab fa-linkedin fa-2x"></i></a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright -->
+    <div class="text-dark text-center m-0 p-4 font-weight-bold" style="background-color: #ffbd59;">
+        © 2021 Copyright:
+        <a href="#">iKnow Technology</a>
+    </div>
+    <!-- Copyright -->
+</footer>

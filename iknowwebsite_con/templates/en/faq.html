@@ -1,0 +1,59 @@
+{% extends 'en/layoutwithoutfooter.html' %}
+{% load static %}
+{% block content-without-footer %}
+
+<div class="container mt-5">
+    <h3 class="mb-3">
+        {% block title %}
+        Frequently Asked Questions
+        {% endblock title %}
+    </h3>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home_en' %}">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Frequently Asked Questions</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-8 offset-md-2 col-xs-12">
+            <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="card">
+                    <div class="card-header" role="tab" id="heading{{faqFirst.faqSlug}}">
+                        <h5 class="mb-0">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#{{faqFirst.faqSlug}}"
+                                aria-expanded="true" aria-controls="{{faqFirst.faqSlug}}">{{faqFirst.faqTitle}}</a>
+                        </h5>
+                    </div>
+                    <div id="{{faqFirst.faqSlug}}" class="collapse show" role="tabpanel"
+                        aria-labelledby="heading{{faqFirst.faqSlug}}">
+                        <div class="card-body">
+                            {{faqFirst.faqContent}}
+                        </div>
+                    </div>
+                </div>
+
+                {% for f in faq %}
+                <div class="card">
+                    <div class="card-header" role="tab" id="heading{{f.faqSlug}}">
+                        <h5 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#{{f.faqSlug}}"
+                                aria-expanded="false" aria-controls="{{f.faqSlug}}">{{f.faqTitle}}
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="{{f.faqSlug}}" class="collapse" role="tabpanel" aria-labelledby="heading{{f.faqSlug}}">
+                        <div class="card-body">
+                            {{f.faqContent}}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content-without-footer %}

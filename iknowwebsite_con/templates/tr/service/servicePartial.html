@@ -1,0 +1,30 @@
+{% load static %}
+<!-- Service Section -->
+<div class="jumbotron bg-white px-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center mb-4">
+                    <i class="fas fa-tools"></i> HİZMETLER
+                </h2>
+                <h5 class="text-muted mb-4 text-center">
+                    Siz değerli müşterilerimize profesyonel çözüm ve hizmetlerimizi alanında uzman ekibimiz ile sunuyoruz. 
+                </h5>
+            </div>
+            {% for service in servicePartial %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <a class="text-center" href="{% url 'serviceSingle' service.serviceSlug %}">
+                    <div class="card border-0 h-100 shadow">
+                        <div class="card-body">
+                            <p class="my-4">{{ service.serviceIcon|safe }}</p>
+                            <h5 class="card-title text-center">
+                                {{ service.serviceTitle }}
+                            </h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

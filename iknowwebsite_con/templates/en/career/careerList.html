@@ -1,0 +1,38 @@
+{% extends 'en/layoutwithoutfooter.html' %}
+{% load static %}
+{% block content-without-footer %}
+
+<div class="container mt-5">
+
+    <h3 class="mb-3">
+        {% block title %}
+        Career
+        {% endblock title %}
+    </h3>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home_en' %}">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Career</li>
+    </ol>
+
+    <ul class="list-group">
+
+        {% for career in careerList %}
+        <li class="list-group-item">
+            <h5><a href="{% url 'careerSingle_en' career.careerSlug career.pk %}">
+                    {{ career.careerTitle }}
+                </a></h5>
+            <span class="float-left">{{ career.careerLocation }}</span>
+            <span class="float-right">{{ career.careerDate|date:'m/d/Y' }}</span>
+
+        </li>
+        {% endfor %}
+
+    </ul>
+
+</div>
+</div>
+
+{% endblock content-without-footer %}

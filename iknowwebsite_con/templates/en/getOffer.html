@@ -1,0 +1,22 @@
+{% extends 'en/layout.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <h3 class="mb-3">
+        {% block title %}
+        Get Offer
+        {% endblock title %}
+    </h3>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home_en' %}">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Get Offer</li>
+    </ol>
+
+
+</div>
+
+{% endblock content %}

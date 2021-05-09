@@ -1,0 +1,88 @@
+{% extends 'tr/layout.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+
+    <h3 class="mb-3">
+        {% block title %}Projeler{% endblock title %}
+    </h3>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home' %}">Anasayfa</a>
+        </li>
+        <li class="breadcrumb-item active">Projeler</li>
+    </ol>
+
+    <div class="row">
+        {% for portfolio in page_portfolioList %}
+        <div class="col-xl-4 col-lg-6 mb-4">
+            <a href="{% url 'portfolioSingle' portfolio.portfolioSlug %}">
+                <div class="card border-0 h-100 shadow">
+                    <img class="img-fluid" src="{{ portfolio.portfolioImage.url }}" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            {{ portfolio.portfolioTitle }}
+                        </h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <nav>
+                <ul class="pagination pagination-lg justify-content-center">
+                    <li class="page-item {% if not page_portfolioList.has_previous %} disabled {% endif %}">
+                        <a class="btn-sm btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+                            title="First Page" href="?page=1" tabindex="-1"><i class="fas fa-angle-double-left"></i></a>
+                    </li>
+                    <li class="page-item {% if not page_portfolioList.has_previous %} disabled {% endif %}">
+                        <a class="btn-sm btn-light"
+                            href="{% if page_portfolioList.has_previous %}?page={{ page_portfolioList.previous_page_number }}{% endif %} "
+                            tabindex="-1"><i class="fas fa-angle-left"></i></a>
+                    </li>
+
+                    {% if page_portfolioList.number|add:'-3' > 1 %}
+                    <li class="page-item disabled"><a class="btn-sm btn-light"
+                            href="?page={{ page_portfolioList.number|add:'-4' }}">&hellip;</a></li>
+                    {% endif %}
+
+                    {% for i in page_portfolioList.paginator.page_range %}
+                    {% if page_portfolioList.number == i %}
+                    <li class="active page-item disabled"><a class="btn-sm btn-primary" href="?page={{ i }}">{{ i }}</a>
+                    </li>
+                    {% elif i > page_portfolioList.number|add:'-4' and i < page_portfolioList.number|add:'4' %}
+                    <li class="page-item"><a class="btn-sm btn-light" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if page_portfolioList.paginator.num_pages > page_portfolioList.number|add:'3' %}
+                    <li class="page-item disabled"><a class="btn-sm btn-light"
+                            href="?page={{ page_portfolioList.number|add:'4' }}">&hellip;</a></li>
+                    {% endif %}
+
+                    <li class="page-item {% if not page_portfolioList.has_next %} disabled {% endif %}">
+                        <a class="btn-sm btn-light"
+                            href="{% if page_portfolioList.has_next %} ?page={{ page_portfolioList.next_page_number }} {% endif %}"><i
+                                class="fas fa-angle-right"></i></a>
+                    </li>
+                    <li class="page-item {% if not page_portfolioList.has_next %} disabled {% endif %}">
+                        <a class="btn-sm btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Last Page"
+                            href="{% if page_portfolioList.has_next %} ?page={{ page_portfolioList.paginator.num_pages }}  {% endif %}"><i
+                                class="fas fa-angle-double-right"></i></a>
+                    </li>
+                </ul>
+                <ul class="pagination pagination-lg justify-content-center">
+                    <li>Sayfa {{page_portfolioList.number}} / {{ page_portfolioList.paginator.num_pages }}</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

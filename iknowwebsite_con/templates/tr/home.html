@@ -1,0 +1,16 @@
+{% extends 'tr/layout.html' %}
+{% load static %}
+{% load render_partial %}
+
+{% block title %} Anasayfa {% endblock title %}
+
+{% block content %}
+{% render_partial 'carouselPartial' %}
+<div>
+    {% render_partial 'clientPartial' %}
+    {% render_partial 'servicePartial' %}
+    {% render_partial 'portfolioPartial' %}
+    {% render_partial 'blogPartial' %}
+    {% render_partial 'testimonialPartial' %}
+</div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'en/layout.html' %}
+{% load static %}
+{% load render_partial %}
+
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block content %}
+
+{% render_partial 'carouselPartial_en' %}
+<div>
+    {% render_partial 'clientPartial_en' %}
+    {% render_partial 'servicePartial_en' %}
+    {% render_partial 'portfolioPartial_en' %}
+    {% render_partial 'blogPartial_en' %}
+    {% render_partial 'testimonialPartial_en' %}
+</div>
+
+{% endblock content %}

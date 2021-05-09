@@ -1,0 +1,39 @@
+{% load static %}
+<!-- Carousel Section -->
+
+<div class="owl-hero owl-carousel owl-theme bg-white shadow">
+    {% for carousel in carouselPartial %}
+    <div class="jumbotron p-md-5 p-sm-3 p-0 m-0" style="background-color: {{carousel.carouselBackgroundColor}};">
+        <div class="container p-0 shadow">
+            <div class="item" data-hash="{{carousel.carouselSlug}}">
+                <div class="carousel-large">
+                    <a href=" {% url 'carouselSingle' carousel.carouselSlug %} ">
+                        <img class="rounded shadow h-100" src="{{carousel.carouselImageLarge.url}}" alt=""></a>
+                </div>
+                <div class="carousel-medium">
+                    <a href=" {% url 'carouselSingle' carousel.carouselSlug %} ">
+                        <img class="rounded shadow h-100" src="{{carousel.carouselImageMedium.url}}" alt=""></a>
+                </div>
+                <div class="carousel-small">
+                    <a href=" {% url 'carouselSingle' carousel.carouselSlug %} ">
+                        <img src="{{carousel.carouselImageSmall.url}}" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<ul class="nav justify-content-center">
+    {% for carousel in carouselPartial %}
+    <li class="nav-item">
+        <a class="nav-link url" href="#{{carousel.carouselSlug}}">
+            <div class="carousel-large">
+                <img class="rounded shadow" width="144" height="80" src="{{carousel.carouselImageMedium.url}}" alt="">
+            </div>
+            <div class="carousel-medium">
+                <img class="rounded shadow" width="144" height="80" src="{{carousel.carouselImageMedium.url}}" alt="">
+            </div>
+        </a>
+    </li>
+    {% endfor %}
+</ul>

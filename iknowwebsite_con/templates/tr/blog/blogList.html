@@ -1,0 +1,101 @@
+{% extends 'tr/layout.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+
+    <h3 class="mb-3">
+        {% block title %}Blog{% endblock title %}
+    </h3>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home' %}">Anasayfa</a>
+        </li>
+        <li class="breadcrumb-item active">Blog</li>
+    </ol>
+
+    <div class="row">
+        {% for blog in page_blogList %}
+        <div class="col-xl-4 col-lg-6 mb-4">
+            <div class="card border-0 h-100 shadow">
+                <img class="img-fluid" src="{{ blog.blogImage.url }}" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ blog.blogTitle }}
+                    </h5>
+                    <p class="card-text text-right text-muted">
+                        {{ blog.blogDate }}
+                    </p>
+                    <p>{{blog.total_views}} Görüntülenme</p>
+                </div>
+                <div class="card-footer text-right">
+                    <form action="{% url 'blogSingle' blog.blogSlug %}" method="get">
+                        <input type="hidden" name="blog-slug" value="{{blog.blogSlug}}">
+                        <button type="submit" class="btn btn-primary">Devamını Oku <i
+                                class="fas fa-arrow-right"></i></a></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <nav>
+                <ul class="pagination pagination-lg justify-content-center">
+                    <li class="page-item {% if not page_blogList.has_previous %} disabled {% endif %}">
+                        <a class="btn-sm btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+                            title="First Page" href="?page=1" tabindex="-1"><i class="fas fa-angle-double-left"></i></a>
+                    </li>
+                    <li class="page-item {% if not page_blogList.has_previous %} disabled {% endif %}">
+                        <a class="btn-sm btn-light"
+                            href="{% if page_blogList.has_previous %}?page={{ page_blogList.previous_page_number }}{% endif %} "
+                            tabindex="-1"><i class="fas fa-angle-left"></i></a>
+                    </li>
+
+                    {% if page_blogList.number|add:'-3' > 1 %}
+                    <li class="page-item disabled"><a class="btn-sm btn-light"
+                            href="?page={{ page_blogList.number|add:'-4' }}">&hellip;</a></li>
+                    {% endif %}
+
+                    {% for i in page_blogList.paginator.page_range %}
+                    {% if page_blogList.number == i %}
+                    <li class="active page-item disabled"><a class="btn-sm btn-primary" href="?page={{ i }}">{{ i }}</a>
+                    </li>
+                    {% elif i > page_blogList.number|add:'-4' and i < page_blogList.number|add:'4' %}
+                    <li class="page-item"><a class="btn-sm btn-light" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if page_blogList.paginator.num_pages > page_blogList.number|add:'3' %}
+                    <li class="page-item disabled"><a class="btn-sm btn-light"
+                            href="?page={{ page_blogList.number|add:'4' }}">&hellip;</a></li>
+                    {% endif %}
+
+                    <li class="page-item {% if not page_blogList.has_next %} disabled {% endif %}">
+                        <a class="btn-sm btn-light"
+                            href="{% if page_blogList.has_next %} ?page={{ page_blogList.next_page_number }} {% endif %}"><i
+                                class="fas fa-angle-right"></i></a>
+                    </li>
+                    <li class="page-item {% if not page_blogList.has_next %} disabled {% endif %}">
+                        <a class="btn-sm btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Last Page"
+                            href="{% if page_blogList.has_next %} ?page={{ page_blogList.paginator.num_pages }}  {% endif %}"><i
+                                class="fas fa-angle-double-right"></i></a>
+                    </li>
+
+                </ul>
+                <ul class="pagination pagination-lg justify-content-center">
+                    <li>Sayfa {{page_blogList.number}} / {{ page_blogList.paginator.num_pages }}</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+{% endblock content %}

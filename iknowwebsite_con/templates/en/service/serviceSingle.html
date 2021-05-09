@@ -1,0 +1,37 @@
+{% extends 'en/layout.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+
+    <h3 class="mb-3">
+        {% block title %}
+        {{ serviceSingle.serviceTitle }}
+        {% endblock title %}
+    </h3>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">
+            <a href="{% url 'home_en' %}">Home</a>
+        </li>
+        <li class="breadcrumb-item active"><a href="{% url 'serviceList_en' %}">Services</a></li>
+        <li class="breadcrumb-item">{{serviceSingle.serviceTitle}}</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-8 offset-md-2 col-xs-12">
+            <div class="media">
+                <div class="mr-3">
+                    {{ serviceSingle.serviceIcon|safe }}
+                </div>
+                <div class="media-body">
+                    <h5 class="mt-0">{{serviceSingle.serviceTitle}}</h5>
+                    <p>
+                        {{serviceSingle.serviceContent|safe}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
